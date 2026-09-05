@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create account · Dispatch Board</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <div class="auth-screen">
+    <section class="auth-hero">
+      <div class="brand">
+        <span class="lamp lamp--doing"></span>
+        Dispatch Board
+      </div>
+
+      <div>
+        <h1>Claim work the moment it opens up.</h1>
+        <p>
+          Create tasks, pick up anything unassigned, and drag your own
+          work across To do, Doing, and Done as you make progress.
+        </p>
+
+        <div class="mini-board" aria-hidden="true">
+          <div class="mini-col todo">
+            <div class="mini-col-label"><span class="lamp lamp--todo"></span>To do</div>
+            <div class="mini-card" style="width: 80%"></div>
+            <div class="mini-card" style="width: 60%"></div>
+          </div>
+          <div class="mini-col doing">
+            <div class="mini-col-label"><span class="lamp lamp--doing"></span>Doing</div>
+            <div class="mini-card" style="width: 90%"></div>
+          </div>
+          <div class="mini-col done">
+            <div class="mini-col-label"><span class="lamp lamp--done"></span>Done</div>
+            <div class="mini-card" style="width: 65%"></div>
+            <div class="mini-card" style="width: 50%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-hero-foot">Lesstaxi &middot; internal tools</div>
+    </section>
+
+    <section class="auth-form-wrap">
+      <div class="auth-card">
+        <h2>Create your account</h2>
+        <p class="sub">Normal-user access — join the board in a minute.</p>
+
+        <div id="banner" role="alert"></div>
+
+        <form id="register-form" novalidate>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="new-password" required minlength="8" />
+            <div class="field-error" id="password-hint">At least 8 characters.</div>
+          </div>
+          <button class="btn btn--primary btn--block" type="submit" id="submit-btn">Create account</button>
+        </form>
+
+        <p class="auth-switch">
+          Already have an account? <a href="index.html">Sign in</a>
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

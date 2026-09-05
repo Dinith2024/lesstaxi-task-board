@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in · Dispatch Board</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <div class="auth-screen">
+    <section class="auth-hero">
+      <div class="brand">
+        <span class="lamp lamp--doing"></span>
+        Dispatch Board
+      </div>
+
+      <div>
+        <h1>Every task, tracked like a job in motion.</h1>
+        <p>
+          A shared board for the team: pick up open work, move it across
+          the queue, and see status change land for everyone in real time.
+        </p>
+
+        <div class="mini-board" aria-hidden="true">
+          <div class="mini-col todo">
+            <div class="mini-col-label"><span class="lamp lamp--todo"></span>To do</div>
+            <div class="mini-card" style="width: 80%"></div>
+            <div class="mini-card" style="width: 60%"></div>
+            <div class="mini-card" style="width: 70%"></div>
+          </div>
+          <div class="mini-col doing">
+            <div class="mini-col-label"><span class="lamp lamp--doing"></span>Doing</div>
+            <div class="mini-card" style="width: 90%"></div>
+            <div class="mini-card" style="width: 55%"></div>
+          </div>
+          <div class="mini-col done">
+            <div class="mini-col-label"><span class="lamp lamp--done"></span>Done</div>
+            <div class="mini-card" style="width: 65%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-hero-foot">Lesstaxi &middot; internal tools</div>
+    </section>
+
+    <section class="auth-form-wrap">
+      <div class="auth-card">
+        <h2>Welcome back</h2>
+        <p class="sub">Sign in to see the board.</p>
+
+        <div id="banner" role="alert"></div>
+
+        <form id="login-form" novalidate>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" required />
+          </div>
+          <button class="btn btn--primary btn--block" type="submit" id="submit-btn">Sign in</button>
+        </form>
+
+        <p class="auth-switch">
+          New here? <a href="register.html">Create an account</a>
+        </p>
+
+        <div class="auth-hint">
+          Administrator accounts are created by the team via a seed script,
+          not through this form — ask your admin for access if you need it.
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

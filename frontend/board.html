@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Board · Dispatch Board</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/board.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="brand">
+          <span class="lamp lamp--doing"></span>
+          Dispatch Board
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="btn btn--ghost btn--sm" id="team-btn" hidden>Team</button>
+        <div class="user-chip">
+          <span class="avatar" id="user-avatar"></span>
+          <span id="user-name"></span>
+          <span class="role-badge" id="role-badge"></span>
+        </div>
+        <button class="btn btn--ghost btn--sm" id="logout-btn">Log out</button>
+      </div>
+    </header>
+
+    <main class="board-wrap">
+      <div class="board-toolbar">
+        <div>
+          <h1>Task board</h1>
+          <p class="sub" id="board-sub">Drag a card you own to change its status.</p>
+        </div>
+        <button class="btn btn--primary" id="new-task-btn">New task</button>
+      </div>
+
+      <div id="board-state" class="state-banner">Loading board…</div>
+
+      <div class="board" id="board" hidden>
+        <section class="column" data-status="todo">
+          <div class="column-head"><span class="lamp lamp--todo"></span>To do<span class="count" id="count-todo">0</span></div>
+          <div class="column-cards" id="col-todo"></div>
+        </section>
+        <section class="column" data-status="doing">
+          <div class="column-head"><span class="lamp lamp--doing"></span>Doing<span class="count" id="count-doing">0</span></div>
+          <div class="column-cards" id="col-doing"></div>
+        </section>
+        <section class="column" data-status="done">
+          <div class="column-head"><span class="lamp lamp--done"></span>Done<span class="count" id="count-done">0</span></div>
+          <div class="column-cards" id="col-done"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- New / edit task modal -->
+  <div class="modal-backdrop" id="task-modal-backdrop" hidden>
+    <div class="modal">
+      <h3 id="task-modal-title">New task</h3>
+      <p class="modal-sub">Tasks start in the To do column, unassigned.</p>
+      <div id="task-modal-banner"></div>
+      <form id="task-form">
+        <div class="field">
+          <label for="task-title">Title</label>
+          <input id="task-title" name="title" type="text" required maxlength="140" />
+        </div>
+        <div class="field">
+          <label for="task-description">Description</label>
+          <textarea id="task-description" name="description" maxlength="2000"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn--ghost" id="task-modal-cancel">Cancel</button>
+          <button type="submit" class="btn btn--primary" id="task-modal-submit">Create task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete confirmation -->
+  <div class="modal-backdrop" id="delete-modal-backdrop" hidden>
+    <div class="modal">
+      <h3>Delete this task?</h3>
+      <p class="modal-sub">This can't be undone.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn--ghost" id="delete-modal-cancel">Cancel</button>
+        <button type="button" class="btn btn--danger" id="delete-modal-confirm">Delete task</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin: team roster -->
+  <div class="modal-backdrop" id="team-modal-backdrop" hidden>
+    <div class="modal">
+      <h3>Team</h3>
+      <p class="modal-sub">Everyone with access to the board.</p>
+      <div class="team-list" id="team-list"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn--ghost" id="team-modal-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/board.js"></script>
+</body>
+</html>

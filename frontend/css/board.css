@@ -1,0 +1,330 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------------------------------------------------------------- */
+/*  Header                                                            */
+/* ---------------------------------------------------------------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 28px;
+  border-bottom: 1px solid var(--ink-800);
+  background: var(--ink-900);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.role-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 20px;
+  border: 1px solid var(--ink-600);
+  color: var(--paper-dim);
+}
+.role-badge.admin {
+  border-color: var(--amber-dim);
+  color: var(--amber);
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--paper-dim);
+}
+.user-chip .avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--ink-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--paper);
+}
+
+/* ---------------------------------------------------------------- */
+/*  Board                                                             */
+/* ---------------------------------------------------------------- */
+.board-wrap {
+  flex: 1;
+  padding: 24px 28px 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.board-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.board-toolbar h1 {
+  font-size: 19px;
+  font-weight: 650;
+  margin: 0;
+}
+.board-toolbar .sub {
+  color: var(--paper-faint);
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column {
+  background: var(--ink-900);
+  border: 1px solid var(--ink-800);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  min-height: 200px;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.column.drop-target {
+  border-color: var(--amber-dim);
+  background: var(--ink-800);
+}
+
+.column-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 6px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--paper-dim);
+}
+.column-head .count {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--paper-faint);
+  background: var(--ink-800);
+  border-radius: 20px;
+  padding: 1px 8px;
+  font-size: 12px;
+}
+
+.column-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 40px;
+}
+
+.empty-col {
+  color: var(--paper-faint);
+  font-size: 13px;
+  text-align: center;
+  padding: 20px 8px;
+  border: 1px dashed var(--ink-700);
+  border-radius: var(--radius-sm);
+}
+
+/* ---------------------------------------------------------------- */
+/*  Task card                                                        */
+/* ---------------------------------------------------------------- */
+.card {
+  background: var(--ink-800);
+  border: 1px solid var(--ink-700);
+  border-left: 3px solid var(--paper-faint);
+  border-radius: var(--radius-sm);
+  padding: 12px 12px 10px;
+  cursor: grab;
+  transition: border-color 120ms ease, transform 120ms ease;
+}
+.card[draggable="false"] {
+  cursor: default;
+}
+.card.status-doing {
+  border-left-color: var(--teal);
+}
+.card.status-done {
+  border-left-color: var(--green);
+}
+.card:hover {
+  border-color: var(--ink-600);
+}
+.card.dragging {
+  opacity: 0.5;
+}
+
+.card-title {
+  font-size: 14.5px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  line-height: 1.35;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--paper-dim);
+  line-height: 1.5;
+  margin: 0 0 10px;
+  white-space: pre-wrap;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  font-size: 12px;
+  color: var(--paper-faint);
+  margin-bottom: 8px;
+}
+.card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.card-actions select {
+  background: var(--ink-900);
+  border: 1px solid var(--ink-600);
+  color: var(--paper);
+  font-size: 12px;
+  padding: 4px 6px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------------- */
+/*  Modal         */
+/* --------------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 8, 10, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 50;
+}
+.modal-backdrop[hidden] {
+  display: none;
+}
+
+.modal {
+  background: var(--ink-900);
+  border: 1px solid var(--ink-700);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--shadow-panel);
+}
+
+.modal h3 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-weight: 650;
+}
+.modal .modal-sub {
+  color: var(--paper-faint);
+  font-size: 13px;
+  margin: 0 0 20px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* Admin: team roster panel */
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.team-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: var(--ink-800);
+  border: 1px solid var(--ink-700);
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+}
+.team-row .name {
+  font-weight: 600;
+}
+.team-row .email {
+  color: var(--paper-faint);
+  font-size: 12px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink-800);
+  border: 1px solid var(--ink-600);
+  color: var(--paper);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 13.5px;
+  z-index: 100;
+  box-shadow: var(--shadow-panel);
+}
+.toast--error {
+  border-color: var(--red-dim);
+  color: #f2b2ac;
+}
+
+.state-banner {
+  text-align: center;
+  color: var(--paper-faint);
+  font-size: 14px;
+  padding: 60px 0;
+}
